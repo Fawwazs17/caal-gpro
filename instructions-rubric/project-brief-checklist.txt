@@ -1,0 +1,53 @@
+
+Form Your Group
+
+Each group can have a maximum of 4 members.
+
+Review the Project Specifications File
+
+This file contains important details, including:
+
+Project requirements and specifications
+
+Project management guidelines (grouping, deadlines, etc.)
+
+Select a Project Topic
+
+Discuss with your team and choose one topic to implement.
+
+Note: This is a MIPS simulation project, meaning:
+
+No actual hardware will be implemented.
+
+However, one of the required submissions is a hardware listing, which must include:
+
+Sensors and actuators relevant to your chosen topic.
+
+Detailed specifications, such as type, model name/number, and operating range.
+
+Understand the Evaluation Criteria
+
+All project outcomes and documentation will be assessed using the provided rubrics.
+
+Ensure you meet the required standards for each submission.
+
+Follow the Submission Schedule
+
+The project consists of 4 submissions (including the Project Grouping).
+
+Refer to the Project Specification Document for the exact deadlines.
+
+All the submission file names should have the following format
+
+BICS2304_Section#_Group#_ProjectTitle_Submission#
+
+Example - BICS2304_4_1_SmartNeonatalIncubatorEnvironmentController_1.pdf
+
+
+
+Last modified: Thursday, 23 April 2026, 11:42 PM
+Grouping - list group members' details (name and matric number) 28 April 2026
+Submission of finalised flowchart, use case and work distribution 3 May 2026
+Submission of Hardware list and description 9 May 2026
+Submission of source code and test cases 8 June 2026
+Presentation 9 June 2026

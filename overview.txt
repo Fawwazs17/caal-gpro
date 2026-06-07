@@ -1,0 +1,70 @@
+
+# ============================================================
+# BICS 2304 - Computer Architecture and Assembly Language
+# Project Title : Wearable Heat Stroke & Dehydration Prevention System
+# Submission    : 3 - Source Code
+# Section       : 04
+# Lecturer      : Yasir Mehmood
+#
+# Prepared By:
+#   No.  Name                                    Matric No.
+#   1    Adam Fawwaz Bin Sazalizam               2416969
+#   2    Ahmad Fawwaz Bin Abdul Kadir            2418497
+#   3    Wan Abdullah Mikhaiel Bin Wan Shamsuddin 2416229
+#   4    Alfyan Shawn Bin Jasni Shirlin          2417841
+#
+# ============================================================
+# SYSTEM OVERVIEW
+# ============================================================
+# This program simulates a wearable IoT device that prevents
+# heat-related illnesses for outdoor workers and athletes in
+# tropical climates. It continuously polls four simulated
+# sensor inputs and applies a priority-based decision engine
+# to trigger appropriate actuator responses.
+#
+# SENSORS (simulated as user-input variables):
+#   S1 - MAX30205 Body Temperature Sensor  (0-50 deg C)
+#   S2 - MAX30102 Pulse Rate Sensor        (BPM)
+#   S3 - MPU6050  Accelerometer            (G-Force)
+#   S4 - Sustained Motion Timer            (minutes)
+#
+# ACTUATORS (simulated as console output messages):
+#   A1 - Haptic Vibration Motor
+#   A2 - Hydration Reminder LED
+#   A3 - Cooling Vest Fan
+#   A4 - Emergency GPS Broadcast (via SIM800L module)
+#
+# PRIORITY DECISION LOGIC (evaluated highest to lowest):
+#   P1 - Fall Detection  : Accel > 100 AND Motion Timer = 0
+#        -> [Status: CRITICAL] + GPS SOS + exit code 10
+#   P2 - Heat Stress     : HR > 130 AND Temp > 38
+#        -> [Status: Take a break] + Haptic continuous + Fan ON
+#   P3 - Hydration Alert : Motion Timer >= 15
+#        -> [Drink Water] + LED blink + Haptic pulse + reset timer
+#   P4 - Safe (default)  : All conditions normal
+#        -> [Status: Safe] + all actuators OFF
+#
+# INPUT VALIDATION:
+#   Temperature must be in range 0-50 deg C (physiological bound).
+#   Invalid input prints an error and re-prompts until valid.
+#
+# HOW TO RUN IN MARS IDE:
+#   1. Settings > "Allow extended (pseudo) instructions" - ENABLE
+#   2. Assemble (F3), then Run (F5)
+#   3. Enter sensor values when prompted in the I/O console
+#   4. Repeat per monitoring cycle (program loops continuously
+#      unless a critical fall is detected, which exits with code 10)
+#
+# REGISTER USAGE CONVENTION:
+#   $s0 = Body Temperature (current cycle)
+#   $s1 = Heart Rate       (current cycle)
+#   $s2 = Accelerometer G-Force (current cycle)
+#   $s3 = Sustained Motion Timer (current cycle input)
+#   $s6 = Motion Timer accumulator (persists; reset by hydration alert)
+#   $t9 = Secondary timer reference (reset alongside $s6 on hydration)
+#   $t0, $t1 = Temporary comparison registers (scratch)
+#   $v0 = Syscall code / return value
+#   $a0 = Syscall argument (string address or integer)
+#   $ra = Return address (saved/restored on nested calls)
+#   $sp = Stack pointer (decremented when saving $ra)
+# ============================================================
