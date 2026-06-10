@@ -72,7 +72,7 @@ msg_exit:       .asciiz "\n[SYSTEM] Emergency protocol complete. Program exit co
 # threshold constants (from hardware design doc)
 const_hr_thresh:    .word 130   # max heart rate before heat stress alert
 const_temp_thresh:  .word 38    # max body temp before heat stress alert
-const_accel_thresh: .word 100   # G-force threshold for fall detection
+const_accel_thresh: .word 5     # G-force threshold for fall detection
 const_timer_limit:  .word 15    # minutes before hydration reminder
 const_temp_min:     .word 0     # valid temp lower bound
 const_temp_max:     .word 50    # valid temp upper bound
